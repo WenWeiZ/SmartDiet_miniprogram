@@ -1,0 +1,23 @@
+<view class="topbar">
+  <view class="topbar-item" wx:for="{{topbar}}" data-idx="{{index}}" bindtap="swichbar">
+    <text class="topbar-text {{currentbar==index ? 'active' : ''}}" >{{item}}</text>
+  </view>
+</view>
+
+<!--首页-->
+<scroll-view class="page-home {{currentbar==0 ? '' : 'hidden'}}">
+<swiper indicator-dots="True" autoplay="True" interval="5000">
+  <block wx:for="{{information}}">
+  <swiper-item>
+    <text>{{item}}</text>
+  </swiper-item>
+  </block>
+</swiper>
+
+<view class="line-text">
+    快速介绍
+  </view>
+
+</scroll-view>
+
+
