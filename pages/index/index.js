@@ -1,3 +1,5 @@
+import { request, takePhoto, uploadFile } from '../../utils/all';
+
 // index.js
 // 获取应用实例
 const app = getApp()
@@ -11,11 +13,23 @@ Page({
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
   },
-  // 事件处理函数
-  bindViewTap() {
-    wx.switchTab({
-      url: '../home/home'
-    })
+  bindViewTap: async () => {
+    let photoPath = await takePhoto();
+    console.log(photoPath);
+
+    let {data, statusCode} = await uploadFile({
+      filePath: 'filePath',
+      name: 'name',
+      url: 'https://xxyizhe.xmcp.ltd',
+    });
+
+    r = await request({
+      url: 'https://xxyizhe.xmcp.ltd',
+    });
+    console.log(r);
+    // wx.switchTab({
+    //   url: '../home/home'
+    // })
   },
   onLoad() {
     if (wx.getUserProfile) {
