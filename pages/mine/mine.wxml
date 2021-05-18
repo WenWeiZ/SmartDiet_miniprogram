@@ -1,0 +1,20 @@
+<view class="container">
+  <image src="/image/face.jpeg" class="face">
+  </image>
+<view class="section">
+  <view class="section-title">
+    体重
+  </view>
+</view>
+<view class="section">
+  <view class="section-title">
+    身高
+  </view>
+</view>
+<view class="section">
+  <view class="section-title">
+    目标体重
+  </view>
+</view>
+<button class="modify">修改</button>
+</view>

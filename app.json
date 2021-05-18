@@ -1,0 +1,38 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/home/home",
+    "pages/logs/logs",
+    "pages/diet/diet",
+    "pages/mine/mine"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "智能营养助手",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "white",
+    "borderStyle": "white",
+    "backgroundColor": "#232323",
+    "list": [
+    {
+      "pagePath": "pages/home/home",
+      "iconPath": "image/bar_home.png",
+      "selectedIconPath": "image/bar_home_black.png"
+    },
+    {
+      "pagePath": "pages/diet/diet",
+      "iconPath": "image/bar_explore.png",
+      "selectedIconPath": "image/bar_explore_black.png"
+    },
+    {
+      "pagePath": "pages/mine/mine",
+      "iconPath": "image/bar_mine.png",
+      "selectedIconPath": "image/bar_mine_black.png"      
+    }]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

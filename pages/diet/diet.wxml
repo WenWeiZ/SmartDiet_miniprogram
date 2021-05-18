@@ -1,0 +1,12 @@
+<view class="content">
+  <view class="List" wx:for="{{sources}}" wx:key="{{index}}">
+    <image src="{{item}}" />
+    <text>菜名:{{name[index]}}</text>
+    <text>重量:{{weight[index]}}g</text> 
+    <text>卡路里含量:{{calorie[index]/100}}卡</text>  
+  </view>
+  <view class="section">
+    <button type="primary" bindtap="take_photo">一键添加</button>
+    <button type="primary" bindtap="add">手动添加</button>
+  </view>
+</view>
