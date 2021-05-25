@@ -1,19 +1,49 @@
-/**index.wxss**/
-.userinfo {
+#page {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  color: #aaa;
+  height: 100vh;
 }
 
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
+#dish-list {
+  flex: 1;
+  height: 1px; /* necessary because wechat scroll-view is bullshit */
+}
+
+.dish-item {
+  /* border: 1rpx solid black; */
   margin: 20rpx;
-  border-radius: 50%;
+  background-color: #fcfcfc;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.usermotto {
-  margin-top: 200px;
+.dish-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.dish-weight {
+  font-size: small;
+  color: #333333;
+}
+
+.dish-chevron {
+  margin: 10rpx;
+  color: grey;
+}
+
+.sep {
+  width: 750rpx;
+  height: 1rpx;
+  background-color: #eeeeee;
+  margin-left: 20rpx;
+}
+
+button {
+  margin: 20rpx;
+  background-color: greenyellow;
 }

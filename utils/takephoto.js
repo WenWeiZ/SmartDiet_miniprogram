@@ -4,8 +4,8 @@ function takePhoto(params) {
   return new Promise((resolve, reject) => {
     let ctx = wx.createCameraContext();
     ctx.takePhoto({
-      success: (path) => {
-        resolve(path);
+      success: ({tempImagePath}) => {
+        resolve(tempImagePath);
       },
       fail: (err) => {
         reject(err);

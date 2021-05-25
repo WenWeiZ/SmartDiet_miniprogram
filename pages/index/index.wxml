@@ -1,4 +1,27 @@
-<!--index.wxml-->
+<view id="page">
+  <scroll-view id="dish-list" scroll-y="true">
+    <block wx:for="{{dishes}}">
+      <view class="dish-item" data-index="{{index}}" bindtap="bindTapDishDetail">
+        <view class="dish-text">
+          <text class="dish-name">{{item.name}}</text>
+          <block wx:if="{{item.weight}}">
+            <text class="dish-weight">食用量: {{item.weight}}g</text>
+          </block>
+          <block wx:else>
+            <text class="dish-weight">等待第二次称重</text>
+          </block>
+        </view>
+        <view class="dish-chevron">
+          >
+        </view>
+      </view>
+      <view class="sep"></view>
+    </block>
+  </scroll-view>
+  <button>添加菜品</button>
+</view>
+
+<!--
 <view class="container">
   <view class="userinfo">
     <block wx:if="{{canIUseOpenData}}" calss="userinfo-opendata">
@@ -17,7 +40,9 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
+  
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
 </view>
+-->
