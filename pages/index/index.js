@@ -23,11 +23,11 @@ Page({
   bindTapDishDetail: (e) => {
     let index = e.currentTarget.dataset.index;
     console.log(index);
-    let img = 'images/face.jpeg';
+    let img = '../../images/face.jpeg';
     let name = '酸菜肉丝';
     let calories = 120;
     let weight1 = 80;
-    let weight2 = undefined;
+    let weight2 = "";
     wx.navigateTo({
       url: `../detail/detail?img=${img}&name=${name}&calories=${calories}&weight1=${weight1}&weight2=${weight2}`,
     })

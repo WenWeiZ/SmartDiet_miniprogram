@@ -43,7 +43,15 @@
   margin-left: 20rpx;
 }
 
-button {
+#button-row {
+  display: flex;
+  flex-direction: row;
+}
+
+#button-row > button {
   margin: 20rpx;
+}
+
+.default-button {
   background-color: greenyellow;
 }

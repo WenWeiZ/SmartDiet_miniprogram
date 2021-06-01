@@ -18,7 +18,10 @@
       <view class="sep"></view>
     </block>
   </scroll-view>
-  <button>添加菜品</button>
+  <view id="button-row">
+    <button>手动添加</button>
+    <button class="default-button">拍照添加</button>
+  </view>
 </view>
 
 <!--

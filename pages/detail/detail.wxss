@@ -1,0 +1,43 @@
+#page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#editor {
+  height: 1400rpx;
+  flex: 1;
+  margin: 20rpx;
+  margin-bottom: 50rpx;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.editor-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.left-pane {
+  display: flex;
+  flex-direction: column;
+}
+
+.right-pane {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+input {
+  margin-top: 10rpx;
+}
+
+.sep {
+  height: 1rpx;
+  background-color: #eeeeee;
+}
