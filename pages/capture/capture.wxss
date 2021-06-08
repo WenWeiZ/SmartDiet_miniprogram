@@ -1,0 +1,11 @@
+#page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+button {
+  margin-bottom: 50rpx;
+  background-color: greenyellow;
+}

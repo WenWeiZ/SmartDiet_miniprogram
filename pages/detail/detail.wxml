@@ -1,10 +1,16 @@
 <view id="page">
-  <image src="{{img}}"></image>
+  <block wx:if="{{img}}">
+    <image class="img" src="{{img}}"></image>
+  </block>
+  <block wx:else>
+    <text class="img">无图片</text>
+  </block>
+  
   <view id="editor">
     <view class="editor-row">
       <view class="left-pane">
         <text>菜品名</text>
-        <input name="name" placeholder="请输入菜品名" value="{{name}}"/>
+        <input name="name" placeholder="请输入菜品名" value="{{name}}" bindinput="input1"/>
       </view>
     </view>
     <view class="sep"></view>
@@ -12,7 +18,7 @@
     <view class="editor-row">
       <view class="left-pane">
         <text>卡路里含量</text>
-        <input name="calories" placeholder="请输入每100g所含卡路里" value="{{calories}}"/>
+        <input name="calories" placeholder="请输入每100g所含卡路里" value="{{calories}}" bindinput="input2"/>
       </view>
     </view>
     <view class="sep"></view>
@@ -20,10 +26,10 @@
     <view class="editor-row">
       <view class="left-pane">
         <text>餐前重量</text>
-        <input name="weight1" placeholder="请输入用餐前的重量" value="{{weight1}}"/>
+        <input name="weight1" placeholder="请输入用餐前的重量" value="{{weight1}}" bindinput="input3"/>
       </view>
       <view class="right-pane">
-        <button style="width:250rpx; height:100rpx; padding: 20rpx; margin: 0rpx">读取示数</button>
+        <button style="width:250rpx; height:100rpx; padding: 20rpx; margin: 0rpx" bindtap="bindReadWeight1">读取示数</button>
       </view>
     </view>
     <view class="sep"></view>
@@ -31,10 +37,10 @@
     <view class="editor-row">
       <view class="left-pane">
         <text>餐后重量</text>
-        <input name="weight2" placeholder="请输入用餐后的重量" value="{{weight2}}"/>
+        <input name="weight2" placeholder="请输入用餐后的重量" value="{{weight2}}" bindinput="input4"/>
       </view>
       <view class="right-pane">
-        <button style="width:250rpx; height:100rpx; padding: 20rpx; margin: 0rpx">读取示数</button>
+        <button style="width:250rpx; height:100rpx; padding: 20rpx; margin: 0rpx" bindtap="bindReadWeight2">读取示数</button>
       </view>
     </view>
   </view>

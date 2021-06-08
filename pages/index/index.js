@@ -1,49 +1,54 @@
-import { request, takePhoto, uploadFile } from '../../utils/all';
-
-const app = getApp()
+import { sleep } from "../../utils/all";
 
 Page({
-  data: {
-    dishes: [
-      {name: "酸菜肉丝", weight: 40},
-      {name: "水煮肉", weight: undefined},
-      {name: "酸菜肉丝", weight: 40},
-      {name: "水煮肉", weight: undefined},
-      {name: "酸菜肉丝", weight: 40},
-      {name: "水煮肉", weight: undefined},
-      {name: "酸菜肉丝", weight: 40},
-      {name: "水煮肉", weight: undefined},
-      {name: "酸菜肉丝", weight: 40},
-      {name: "水煮肉", weight: undefined},
-      {name: "酸菜肉丝", weight: 40},
-      {name: "水煮肉", weight: undefined},
-    ],
+  data: {},
+
+  getDishes: async function() {
+    return (await wx.getStorage({
+      key: "dishes",
+    })).data;
   },
 
-  bindTapDishDetail: (e) => {
-    let index = e.currentTarget.dataset.index;
-    console.log(index);
-    let img = '../../images/face.jpeg';
-    let name = '酸菜肉丝';
-    let calories = 120;
-    let weight1 = 80;
-    let weight2 = "";
-    wx.navigateTo({
-      url: `../detail/detail?img=${img}&name=${name}&calories=${calories}&weight1=${weight1}&weight2=${weight2}`,
-    })
-  },
-
-  ph: async () => {
-    let photoPath = await takePhoto();
-    console.log(photoPath);
-
-    let {data, statusCode} = await uploadFile({
-      filePath: photoPath,
-      name: 'name',
-      url: 'https://xxyizhe.xmcp.ltd',
+  refresh: async function() {
+    let dishes = await this.getDishes();
+    this.setData({
+      dishes: Object.entries(dishes).map(([id, dish]) => {
+        return {
+          id: dish.id,
+          name: dish.name,
+          weight: dish.weight1 > 0 && dish.weight2 > 0 ? 
+          dish.weight2 - dish.weight1 : undefined,
+        };
+      }),
     });
+  },
 
-    console.log(data, statusCode);
+  onShow: async function() {
+    console.log("Index: onShow");
+    this.refresh();
+    await sleep(100);
+    this.refresh();
+  },
+
+  bindTapDishDetail: async function(e) {
+    let idx = e.currentTarget.dataset.index;
+    let id = this.data.dishes[idx].id;
+    let dish = (await this.getDishes())[id];
+    await wx.navigateTo({
+      url: `../detail/detail?id=${dish.id}&img=${dish.img}&name=${dish.name}&calories=${dish.calories}&weight1=${dish.weight1}&weight2=${dish.weight2}`,
+    });
+  },
+
+  manualadd: function() {
+    wx.navigateTo({
+      url: '../detail/detail',
+    });
+  },
+
+  bindcapture: function() {
+    wx.navigateTo({
+      url: '../capture/capture',
+    });
   },
   
   getUserProfile(e) {
