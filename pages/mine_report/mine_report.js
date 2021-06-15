@@ -108,7 +108,7 @@ Page({
       series: [
         {name: '摄入热量',
          //data: [65],
-         data: ay,
+         data: this.data.calorie_array,
          format: function(val, name){
            return val.toFixed(1) + '大卡';
          }},
@@ -154,55 +154,103 @@ Page({
           recommend: '1800'
         })
         }
-      }
-    })
-    wx.getStorage({
-      key: 'Weight_Record',
-      success: function(res){
-        var weight_record = res.data; 
-        //console.log(weight_record);
-        var Date_array = Object.keys(weight_record).sort();
-        //console.log(Date_array);
-        var Weight_array = [];
-        var Targetweight_array = [];
-        var Recommend_array = [];
-        for(var key in Date_array){
-          Weight_array.push(Number(weight_record[Date_array[key]]));
-          Targetweight_array.push(Number(that.data.targetweight));  
-          Recommend_array.push(Number(that.data.recommend))        
-        } 
-        //截取最新的七个数据
-        if (Date_array.length > 7){
-          Date_array = Date_array.slice(-7);
-          Weight_array = Weight_array.slice(-7);
-          Targetweight_array = Targetweight_array.slice(-7);
-          Recommend_array = Recommend_array.slice(-7);
-        }
-        that.setData({
-          targetweight_array: Targetweight_array,
-          weight_array:  Weight_array,
-          date_array: Date_array,
-          recommend_array: Recommend_array
-        })
-        console.log(that.data.date_array);
-        console.log(that.data.weight_array);
-        //画图
-        that.plotweight();
-        that.plotcalorie();
       },
       fail: function(){
-        weight_record = {};
+        that.setData({
+          targetweight: '50',
+          recommend: '1800'
+        })
+      },
+      complete: function(){
+        //获得和处理体重序列
+        wx.getStorage({
+          key: 'Weight_Record',
+          success: function(res){
+            var weight_record = res.data; 
+            //console.log(weight_record);
+            var Date_array = Object.keys(weight_record).sort();
+            //console.log(Date_array);
+            var Weight_array = [];
+            var Targetweight_array = [];
+            var Recommend_array = [];
+            for(var key in Date_array){
+              Weight_array.push(Number(weight_record[Date_array[key]]));
+              Targetweight_array.push(Number(that.data.targetweight));  
+              Recommend_array.push(Number(that.data.recommend))        
+            } 
+            //截取最新的七个数据
+            if (Date_array.length > 7){
+              Date_array = Date_array.slice(-7);
+              Weight_array = Weight_array.slice(-7);
+              Targetweight_array = Targetweight_array.slice(-7);
+              Recommend_array = Recommend_array.slice(-7);
+            }
+            that.setData({
+              targetweight_array: Targetweight_array,
+              weight_array:  Weight_array,
+              date_array: Date_array,
+              recommend_array: Recommend_array
+            })
+            console.log(that.data.date_array);
+            console.log(that.data.weight_array);
+          },
+          fail: function(){
+            weight_record = {};
+          },
+          complete(){
+            //画图
+            that.plotweight();
+          }
+        })
+        //complete内
+        //获得和处理每日热量摄入
+        var record_dish = {};
+        wx.getStorage({
+          key: 'dishes',
+          success: function(res){
+            console.log('success');
+            var dishes = res.data;
+            var dish = {}; //临时变量
+            console.log(dishes);
+            //搜索所有菜谱用于分类
+            for(var item in dishes){
+              //console.log(dishes[item].name);
+              if(record_dish.hasOwnProperty(dishes[item].date)){
+                dish = record_dish[dishes[item].date];
+                dish.diet.push(dishes[item].name);
+                console.log(dish.calorie);
+                dish.calorie = Number(dish.calorie) + Number(dishes[item].calories) * (Number(dishes[item].weight_before) - Number(dishes[item].weight_after)) / 100;
+              } else {
+                dish = {date: dishes[item].date,
+                        diet: [dishes[item].name],
+                        calorie: Number(dishes[item].calories) * (Number(dishes[item].weight_before) - Number(dishes[item].weight_after)) / 100,
+                        hidden: 1}
+              }
+              record_dish[dishes[item].date] = dish;
+            }
+            console.log(record_dish);
+            var Date_array = Object.keys(record_dish).sort();
+            //截取后七个数据
+            if (Date_array.length > 7){
+              Date_array = Date_array.slice(-7);
+            }
+            var Calorie_array = [];
+            for(var key in Date_array){
+              Calorie_array.push(Number(record_dish[Date_array[key]].calorie));    
+            } 
+            that.setData({
+              calorie_array: Calorie_array
+            })
+          },
+          fail(){
+            console.log('fail');
+          },
+          complete(){
+            console.log('complete')
+            that.plotcalorie();
+          }
+      })
       }
     })
-    //console.log(this.data.weight_array);
-    //体重数据处理
-    /*
-    date_array = Object.keys(weight_record).sort();
-    for(var key in date_array){
-      weight_array.push(weight_record[key]);
-    }
-    console.log(date_array);
-    console.log(weight_array);*/
-    //画图
-  }
+}
 })
