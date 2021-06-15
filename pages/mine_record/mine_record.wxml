@@ -4,7 +4,7 @@
 <block class = 'item' wx:for = "{{record}}">
   <view class = 'date' data-index="{{index}}" bindtap = 'show_control'>{{item.date}}</view>
   <view class = 'diet' wx:for = "{{item.diet}}" wx:for-item = "items" hidden="{{item.hidden}}">
-    {{items}}
+  {{items}}
   </view>
   <view class = 'diet' hidden="{{item.hidden}}">
     <view>总计热量</view><view>{{item.calorie}}大卡</view>
