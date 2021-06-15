@@ -59,7 +59,7 @@ Page({
       calories: this.data.calories,
       weight1: this.data.weight1,
       weight2: this.data.weight2,
-      timestamp: formatDate(new Date())
+      date: formatDate(new Date())
     };
     console.log(dishes);
     await wx.setStorage({

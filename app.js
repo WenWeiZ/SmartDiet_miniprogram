@@ -11,7 +11,7 @@ App({
         calories: 123,
         weight1: 20,
         weight2: 40,
-        timestamp: formatDate(new Date())
+        date: formatDate(new Date())
       },
     };
 
