@@ -1,7 +1,11 @@
 import { request, uploadFile } from '../../utils/all';
+import { formatDate } from '../../utils/time';
 
 function uuid() {
-  return 123;
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
 }
 
 Page({
@@ -19,8 +23,8 @@ Page({
     this.setData({
       id: options.id ?? uuid(),
       img: options.img ?? "",
-      name: options.name ?? "正在识别...",
-      calories: options.calories ?? "正在识别...",
+      name: options.name ?? (options.recognize ? "正在识别..." : ""),
+      calories: options.calories ?? (options.recognize ? "正在识别..." : ""),
       weight1: options.weight1 ?? "",
       weight2: options.weight2 ?? "",
       recognize: options.recognize ?? false,
@@ -55,8 +59,9 @@ Page({
       calories: this.data.calories,
       weight1: this.data.weight1,
       weight2: this.data.weight2,
+      timestamp: formatDate(new Date())
     };
-    console.log(this.data);
+    console.log(dishes);
     await wx.setStorage({
       key: "dishes",
       data: dishes,
