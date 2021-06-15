@@ -64,3 +64,9 @@
 #finish {
   background-color: lightblue;
 }
+
+#tip {
+  margin: 25rpx;
+  padding: 15rpx;
+  background-color: #dcdcdc;
+}
