@@ -18,8 +18,12 @@
       <view class="sep"></view>
     </block>
   </scroll-view>
-  <view id="button-row">
+  <view class="button-row">
     <button bindtap="manualadd">手动添加</button>
+    <text id="spacer"></text>
     <button class="default-button" bindtap="bindcapture">拍照添加</button>
+  </view>
+  <view class="button-row">
+    <button id="finish" bindtap="finish">将这些记录存档为一顿饭</button>
   </view>
 </view>

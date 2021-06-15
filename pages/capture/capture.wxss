@@ -5,7 +5,12 @@
   justify-content: space-between;
 }
 
-button {
+.button-row {
+  display: flex;
+  flex-direction: row;
+}
+
+#capture {
   margin-bottom: 50rpx;
   background-color: greenyellow;
 }

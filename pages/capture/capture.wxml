@@ -1,4 +1,7 @@
 <view id="page">
   <camera style="width:100%; height:80vh"></camera>
-  <button bindtap="bindcapture">拍摄</button>
+  <view class="button-row">
+    <button bindtap="openalbum">从相册选择</button>
+    <button id="capture" bindtap="bindcapture">拍摄</button>
+  </view>
 </view>

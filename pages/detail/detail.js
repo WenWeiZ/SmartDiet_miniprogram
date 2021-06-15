@@ -1,4 +1,4 @@
-import { request } from '../../utils/all';
+import { request, uploadFile } from '../../utils/all';
 
 function uuid() {
   return 123;
@@ -13,21 +13,34 @@ Page({
     })).data;
   },
 
-  onLoad: function (options) {
+  onLoad: async function (options) {
     console.log("Detail: onLoad");
 
     this.setData({
       id: options.id ?? uuid(),
       img: options.img ?? "",
-      name: options.name ?? "dog",
-      calories: options.calories ?? "",
+      name: options.name ?? "正在识别...",
+      calories: options.calories ?? "正在识别...",
       weight1: options.weight1 ?? "",
       weight2: options.weight2 ?? "",
       recognize: options.recognize ?? false,
     });
 
     if (this.data.recognize) {
-      console.log('Uploading image to backend');
+      console.log(`Uploading image to backend: ${options.img}`);
+      let r = await uploadFile({
+        url: 'https://xxyizhe.xmcp.ltd/upload_image',
+        filePath: options.img,
+        name: 'img',
+      });
+      let info = JSON.parse(r.data.data);
+      console.log(info);
+
+      this.setData({
+        ...this.data,
+        name: info.name,
+        calories: parseInt(info.calories),
+      });
     }
   },
 
