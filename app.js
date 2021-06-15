@@ -9,8 +9,8 @@ App({
         img: "",
         name: "示例菜品",
         calories: 123,
-        weight1: 20,
-        weight2: 40,
+        weight_before: 43,
+        weight_after: 26,
         date: formatDate(new Date())
       },
     };

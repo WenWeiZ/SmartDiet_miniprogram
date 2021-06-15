@@ -16,8 +16,8 @@ Page({
         return {
           id: dish.id,
           name: dish.name,
-          weight: dish.weight1 > 0 && dish.weight2 > 0 ? 
-          dish.weight2 - dish.weight1 : undefined,
+          weight: dish.weight_before > 0 && dish.weight_after > 0 ? 
+          dish.weight_before - dish.weight_after : undefined,
         };
       }),
     });
@@ -35,7 +35,7 @@ Page({
     let id = this.data.dishes[idx].id;
     let dish = (await this.getDishes())[id];
     await wx.navigateTo({
-      url: `../detail/detail?id=${dish.id}&img=${dish.img}&name=${dish.name}&calories=${dish.calories}&weight1=${dish.weight1}&weight2=${dish.weight2}`,
+      url: `../detail/detail?id=${dish.id}&img=${dish.img}&name=${dish.name}&calories=${dish.calories}&weight_before=${dish.weight_before}&weight_after=${dish.weight_after}`,
     });
   },
 

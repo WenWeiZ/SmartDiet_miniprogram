@@ -25,8 +25,8 @@ Page({
       img: options.img ?? "",
       name: options.name ?? (options.recognize ? "正在识别..." : ""),
       calories: options.calories ?? (options.recognize ? "正在识别..." : ""),
-      weight1: options.weight1 ?? "",
-      weight2: options.weight2 ?? "",
+      weight_before: options.weight_before ?? "",
+      weight_after: options.weight_after ?? "",
       recognize: options.recognize ?? false,
     });
 
@@ -57,8 +57,8 @@ Page({
       img: this.data.img,
       name: this.data.name,
       calories: this.data.calories,
-      weight1: this.data.weight1,
-      weight2: this.data.weight2,
+      weight_before: this.data.weight_before,
+      weight_after: this.data.weight_after,
       date: formatDate(new Date())
     };
     console.log(dishes);
@@ -78,14 +78,14 @@ Page({
   },
 
   input3: function(e) {
-    this.data.weight1 = parseInt(e.detail.value);
+    this.data.weight_before = parseInt(e.detail.value);
   },
 
   input4: function(e) {
     this.data.weight2 = parseInt(e.detail.value);
   },
 
-  bindReadWeight1: async function() {
+  bindReadWeightBefore: async function() {
     console.log(this.data);
     let res = await request({
       url: 'https://xxyizhe.xmcp.ltd/device',
@@ -93,18 +93,18 @@ Page({
     let weight = res.data.weight;
     this.setData({
       ...this.data,
-      weight1: weight
+      weight_before: weight
     });
   },
 
-  bindReadWeight2: async function() {
+  bindReadWeightAfter: async function() {
     let res = await request({
       url: 'https://xxyizhe.xmcp.ltd/device',
     });
     let weight = res.data.weight;
     this.setData({
       ...this.data,
-      weight2: weight
+      weight_after: weight
     });
   },
 })

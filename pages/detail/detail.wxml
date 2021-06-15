@@ -26,10 +26,10 @@
     <view class="editor-row">
       <view class="left-pane">
         <text>餐前重量</text>
-        <input name="weight1" placeholder="请输入用餐前的重量" value="{{weight1}}" bindinput="input3"/>
+        <input placeholder="请输入用餐前的重量" value="{{weight_before}}" bindinput="input3"/>
       </view>
       <view class="right-pane">
-        <button style="width:250rpx; height:100rpx; padding: 20rpx; margin: 0rpx" bindtap="bindReadWeight1">读取示数</button>
+        <button style="width:250rpx; height:100rpx; padding: 20rpx; margin: 0rpx" bindtap="bindReadWeightBefore">读取示数</button>
       </view>
     </view>
     <view class="sep"></view>
@@ -37,10 +37,10 @@
     <view class="editor-row">
       <view class="left-pane">
         <text>餐后重量</text>
-        <input name="weight2" placeholder="请输入用餐后的重量" value="{{weight2}}" bindinput="input4"/>
+        <input placeholder="请输入用餐后的重量" value="{{weight_after}}" bindinput="input4"/>
       </view>
       <view class="right-pane">
-        <button style="width:250rpx; height:100rpx; padding: 20rpx; margin: 0rpx" bindtap="bindReadWeight2">读取示数</button>
+        <button style="width:250rpx; height:100rpx; padding: 20rpx; margin: 0rpx" bindtap="bindReadWeightAfter">读取示数</button>
       </view>
     </view>
   </view>
