@@ -82,7 +82,7 @@ Page({
   },
 
   input4: function(e) {
-    this.data.weight2 = parseInt(e.detail.value);
+    this.data.weight_after = parseInt(e.detail.value);
   },
 
   bindReadWeightBefore: async function() {
