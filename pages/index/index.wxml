@@ -23,7 +23,4 @@
     <text id="spacer"></text>
     <button class="default-button" bindtap="bindcapture">拍照添加</button>
   </view>
-  <view class="button-row">
-    <button id="finish" bindtap="finish">将这些记录存档为一顿饭</button>
-  </view>
 </view>
