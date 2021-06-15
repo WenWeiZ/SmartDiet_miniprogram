@@ -1,0 +1,43 @@
+<view class = 'user'>
+  <view class = 'box'>
+  <view class = 'imageview'>
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+  </view>
+  <view class = 'box'>
+    <open-data type="userNickName"></open-data>
+  </view>
+</view>
+
+<view class = 'back'>
+
+<view class = "information">
+  <view class = 'item'>
+    <view class = 'text'>我的健康资料</view>
+    <view class = 'symbol'>  </view>
+  </view>
+  <view class = 'item' bindtap = 'info_jump'>
+    <view class = 'text'>基本信息</view>
+    <view class = 'symbol'> > </view>
+  </view>
+  <view class = 'item' bindtap = 'record_jump'>
+    <view class = 'text'>饮食记录</view>
+    <view class = 'symbol'> > </view>
+  </view> 
+  <view class = 'item' bindtap = 'report_jump'>
+    <view class = 'text'>健康报告</view>
+    <view class = 'symbol'> > </view>
+  </view> 
+  <view class = 'item' bindtap = 'modify'>
+    <view class = 'text'>设备号码</view>
+    <view class = 'symbol'> {{id}} </view>
+  </view> 
+  <view class = 'item' bindtap = 'clear'>
+    <view class = 'text'>清理缓存</view>
+  </view> 
+</view>
+<modal hidden="{{modalHidden}}" title="ID修改" confirm-text='确定' cancel-text='取消' 
+  bindconfirm="modalConfirm" bindcancel="modalCancel">
+  <input  placeholder="请输入新的ID" bindinput="newid"/>
+</modal>
+</view>

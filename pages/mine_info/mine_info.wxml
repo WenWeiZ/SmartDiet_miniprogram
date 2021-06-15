@@ -1,0 +1,51 @@
+<view class = 'top'>
+  基本信息
+</view>
+<view class = 'contain'>
+  <view class = 'item'>
+    <text>性别</text>
+    <picker mode='selector' value="{{sex}}" range="{{sexrange}}" bindchange="changesex"> 
+    <text wx:if="{{sex == '0'}}">男</text>
+    <text wx:else>女</text>
+    </picker>
+  </view>
+  <view class = 'item'>
+    <text>出生日期</text>
+    <picker mode='date' value="{{birthday}}" start="1960-01-01" end="2020-01-01" bindchange="changebirthday"> 
+    <text>{{birthday}}</text>
+    </picker>
+  </view>
+  <view class = 'item'>
+    <text>身高</text>
+    <picker mode='selector' value="{{heightid}}" range="{{heightrange}}" bindchange="changeheight"> 
+    <text>{{height}}厘米</text>
+    </picker>
+  </view>
+  <view class = 'item'>
+    <text>最新体重</text>   
+    <text bindtap = 'modify'>{{weight}}千克</text>
+  </view>
+  <view class = 'item'>
+    <text>目标体重 </text>
+    <picker mode='selector' value="{{targetid}}" range="{{weightrange}}" bindchange="changetarget"> 
+    <text>{{targetweight}}千克</text>
+    </picker>
+  </view>
+  <view class = 'item'>
+    <text>运动状态</text>
+    <picker mode='selector' value="{{state}}" range="{{staterange}}" bindchange="changestate"> 
+    <text wx:if="{{state == '0'}}">几乎不动</text>
+    <text wx:if="{{state == '1'}}">稍微运动</text>   
+    <text wx:if="{{state == '2'}}">中度运动</text> 
+    <text wx:if="{{state == '3'}}">积极运动</text>
+    <text wx:if="{{state == '4'}}">专业运动</text>
+    </picker>
+  </view>
+  <view class = 'item'>
+    <text>推荐每日摄入热量</text>
+    <text>{{recommend}}大卡</text>
+  </view>
+  <modal hidden="{{modalHidden}}" title="最新体重修改" confirm-text='确定' cancel-text='取消' bindconfirm="modalConfirm" bindcancel="modalCancel">
+    <input  placeholder="请输入最新体重" bindinput="newweight"/>
+    </modal>
+</view>

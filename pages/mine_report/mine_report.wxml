@@ -1,0 +1,15 @@
+<view class = 'top'>
+  健康报告
+</view>
+<view class = 'contain'>
+<view class = 'title'>
+  体重变化记录
+</view>
+<canvas style="width: 400px; height: 200px;" canvas-id="weight" class="canvas" bindtouchstart="touchHandler1">
+</canvas>
+<view class = 'title'>
+  热量摄入量记录
+</view>
+<canvas style="width: 400px; height: 200px;" canvas-id="calorie" class="canvas" bindtouchstart="touchHandler2">
+</canvas>
+</view>

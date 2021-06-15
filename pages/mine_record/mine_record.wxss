@@ -1,0 +1,29 @@
+.top{
+  background-color:rgb(60,190,140);
+  width: 750rpx;
+  height:80rpx;
+  display: flex;
+  padding: 20rpx;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+.date{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100rpx;
+  width: 100%;
+  margin-bottom: 5rpx;
+  background-color:rgb(226, 235, 231);
+  border-top: 1px solid rgb(68, 68, 68);
+  border-bottom: 1px solid rgb(68, 68, 68);
+}
+.diet{
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  border-bottom: 1px solid rgb(226, 235, 231);
+}

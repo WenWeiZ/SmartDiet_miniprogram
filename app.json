@@ -2,7 +2,11 @@
   "pages": [
     "pages/index/index",
     "pages/detail/detail",
-    "pages/capture/capture"
+    "pages/capture/capture",
+    "pages/mine/mine",
+    "pages/mine_info/mine_info",
+    "pages/mine_report/mine_report",
+    "pages/mine_record/mine_record"  
   ],
   "tabBar": {
     "color": "#cccccc",
@@ -20,7 +24,7 @@
       {
         "selectedIconPath": "images/bar_mine_black.png",
         "iconPath": "images/bar_mine.png",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/mine/mine",
         "text": "我的"
       }
     ]
