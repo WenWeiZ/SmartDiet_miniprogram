@@ -51,6 +51,8 @@ Page({
   onUnload: async function () {
     console.log("Detail: onUnload");
 
+    if (this.data.name == '') return;
+
     let dishes = await this.getDishes();
     dishes[this.data.id] = {
       id: this.data.id,
