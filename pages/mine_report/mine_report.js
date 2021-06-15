@@ -7,13 +7,13 @@ var calorieChart = null;
 //var weight_array = [];
 Page({
   data:{
-    weight_array: [],
-    date_array: [],
+    weight_array: [60],
+    date_array: ['06/01'],
     targetweight: "",
     recommend: "",
-    targetweight_array: [],
-    calorie_array: [],
-    recommend_array: []
+    targetweight_array: [55],
+    calorie_array: [1000],
+    recommend_array: [1000]
   },
   //触摸显示
   touchHandler1: function (e) {
@@ -185,12 +185,14 @@ Page({
               Targetweight_array = Targetweight_array.slice(-7);
               Recommend_array = Recommend_array.slice(-7);
             }
-            that.setData({
-              targetweight_array: Targetweight_array,
-              weight_array:  Weight_array,
-              date_array: Date_array,
-              recommend_array: Recommend_array
-            })
+            if (Date_array.length > 0){
+              that.setData({
+                targetweight_array: Targetweight_array,
+                weight_array:  Weight_array,
+                date_array: Date_array,
+                recommend_array: Recommend_array
+              })
+            } 
             console.log(that.data.date_array);
             console.log(that.data.weight_array);
           },
