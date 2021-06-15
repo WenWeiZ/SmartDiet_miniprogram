@@ -3,7 +3,7 @@ import { formatDate } from 'utils/time';
 
 App({
   onLaunch: async function() {
-    let data = {
+    let init_data = {
       "9e03e9fe-1c52-4ab7-8433-7fbbe58707a5": {
         id: "9e03e9fe-1c52-4ab7-8433-7fbbe58707a5",
         img: "",
@@ -15,19 +15,14 @@ App({
       },
     };
 
-    await wx.setStorage({
-      key: "dishes",
-      data: data,
-    });
-
     try {
-      await wx.getStorage({
-        key: "archive",
+      let data = await wx.getStorage({
+        key: "dishes",
       });
     } catch (err) {
       await wx.setStorage({
-        key: "archive",
-        data: [],
+        key: "dishes",
+        data: init_data,
       });
     }
   },

@@ -18,6 +18,9 @@
       <view class="sep"></view>
     </block>
   </scroll-view>
+  <view id="tip">
+    {{tip}}
+  </view>
   <view class="button-row">
     <button bindtap="manualadd">手动添加</button>
     <text id="spacer"></text>

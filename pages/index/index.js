@@ -1,4 +1,4 @@
-import { sleep } from "../../utils/all";
+import { request, sleep } from "../../utils/all";
 
 Page({
   data: {},
@@ -23,8 +23,19 @@ Page({
     });
   },
 
+  update_tip: async function() {
+    let tip = (await request({
+      url: 'https://xxyizhe.xmcp.ltd/tip'
+    })).data;
+    this.setData({
+      ...this.data,
+      tip: tip
+    });
+  },
+
   onShow: async function() {
     console.log("Index: onShow");
+    this.update_tip();
     this.refresh();
     await sleep(100);
     this.refresh();
