@@ -31,6 +31,10 @@
   <view class = 'item' bindtap = 'modify'>
     <view class = 'text'>设备号码</view>
     <view class = 'symbol'> {{id}} </view>
+  </view>
+  <view class = 'item'>
+    <view class = 'text'>电池电压</view>
+    <view class = 'symbol'> {{voltage}} {{voltage < 3.1 ? "请尽快充电" : "电量充足"}}</view>
   </view> 
   <view class = 'item' bindtap = 'clear'>
     <view class = 'text'>清理缓存</view>

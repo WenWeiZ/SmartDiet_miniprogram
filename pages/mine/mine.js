@@ -1,9 +1,25 @@
+import { request } from '../../utils/all';
+
 Page({
   data:{
     id: 'x2sswrg423495',
     id_cache: '2',
-    modalHidden: true
+    modalHidden: true,
+    voltage: 0,
   },
+
+  onShow: async function() {
+    let res = await request({
+      url: 'https://xxyizhe.xmcp.ltd/device',
+    });
+    let voltage = res.data.voltage;
+    console.log(voltage);
+    this.setData({
+      ...this.data,
+      voltage: voltage
+    });
+  },
+
   modify: function(e){
     this.setData({
       modalHidden: false
