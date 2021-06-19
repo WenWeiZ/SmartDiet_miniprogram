@@ -1,5 +1,6 @@
 Page({
   data:{
+    //record:食物记录
     record: { '2020/06/14':
       {date: '06/14',
        diet: ['水煮肉片', '土豆'],
@@ -20,7 +21,7 @@ Page({
       }
   },
   onLoad: function(){
-    //载入record
+    //从本地存储载入record
     var record_dish = {};
     var that = this;
     wx.getStorage({
@@ -46,6 +47,7 @@ Page({
           record_dish[dishes[item].date] = dish;
         }
         console.log(record_dish);
+        //更改
         that.setData({
           record: record_dish
         })
@@ -57,6 +59,7 @@ Page({
       }
     }) 
   },
+  //点击显示函数，更改hidden变量
   show_control: function(e){
     var r = this.data.record;
     r[e.currentTarget.dataset.index].hidden = !r[e.currentTarget.dataset.index].hidden;

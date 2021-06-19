@@ -62,7 +62,6 @@ Page({
     })
     //console.log(weight_record);
     //获取个人信息
-
     wx.getStorage({
       key: 'Info',
       success:function(res){
@@ -82,6 +81,7 @@ Page({
         }
       },
       fail: function(){
+        //初始化
         that.setData({
           birthday: "2000-02-26",
           sex: "0",
@@ -115,8 +115,8 @@ Page({
     this.setData({
       recommend: sum
     })
-  }
-  ,
+  },
+  
   changebirthday: function(e) {
     console.log("更改出生日期");
     this.setData({
